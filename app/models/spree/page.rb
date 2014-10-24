@@ -13,6 +13,11 @@ class Spree::Page < ActiveRecord::Base
   scope :footer_links, -> { where(:show_in_footer => true).visible }
   scope :sidebar_links, -> { where(:show_in_sidebar => true).visible }
 
+  scope :by_store, lambda { |store| joins(:stores).where("spree_pages_stores.store_id = ?", store) }
+
+  translates :title, :body, :slug, :foreign_link, :meta_keywords, :meta_title, :meta_description, fallbacks_for_empty_translations: true
+  include SpreeI18n::Translatable
+
   before_save :update_positions_and_slug
 
   def initialize(*args)
