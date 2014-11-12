@@ -11,6 +11,6 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
   end
   
   def permitted_params
-   [:translations_attributes => [:id, :title, :body, :slug, :foreign_link, :meta_keywords, :meta_title, :meta_description]]
+   [:translations_attributes => [:id, :title, :body, :slug, :layout, :foreign_link, :meta_keywords, :meta_title, :meta_description]]
   end 
 end
