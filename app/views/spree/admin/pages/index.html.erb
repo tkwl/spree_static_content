@@ -1,7 +1,7 @@
-<%= render 'spree/admin/shared/configuration_menu' %>
+<%#= render 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t("static_content.new_page"), new_object_url, :icon => 'icon-plus', :id => 'admin_new_page' %></li>
+<%= button_link_to Spree.t("static_content.new_page"), new_object_url, :icon => 'icon icon-plus', :id => 'admin_new_page', :class => 'btn-success' %>
 <% end %>
 
 <% content_for :page_title do %>
@@ -9,13 +9,8 @@
 <% end %>
 
 <% if @pages.any? %>
-<table class="index responsive" id="listing_pages" data-hook>
-  <colgroup>
-    <col style="width: 40%">
-    <col style="width: 35%">
-    <col style="width: 10%">
-    <col style="width: 15%">
-  </colgroup>
+<table class="index table" id="listing_pages" data-hook>
+ 
   <thead>
     <tr data-hook="admin_pages_index_headers">
       <th><%= Spree::Page.human_attribute_name(:title) %></th>
@@ -35,7 +30,7 @@
           <%= link_to page.link, page.link, :target => '_blank' %>
         </td>
         <td class="align-center">
-          <%= content_tag(:i, '', :class => 'icon-ok green') if page.visible %>
+          <%= content_tag(:i, '', :class => 'icon icon-show green') if page.visible %>
         </td>
         <td class="actions" data-hook="admin_pages_index_row_actions">
           <%= link_to_edit page, :no_text => true %>
