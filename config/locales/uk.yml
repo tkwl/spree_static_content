@@ -1,0 +1,29 @@
+---
+uk:
+  activerecord:
+    attributes:
+      spree/page:
+        body: Основний текст
+        foreign_link: "Зовнішнє посилання (URL)"
+        layout: Макет
+        meta_description: Опис
+        meta_keywords: "Ключові слова"
+        meta_title: "Мета заголовок"
+        position: Позиція в меню
+        render_layout_as_partial: Використовувати макет як шаблон сторінок
+        show_in_header: "Відображати у верхньому меню"
+        show_in_footer: "Відображати в нижньому меню"
+        show_in_sidebar: "Відображати у боковому меню"
+        slug: "Постійне посилання (slug)"
+        title: Заголовок
+        visible: Публікувати
+    models:
+      spree/page:
+        few: Сторінки
+        many: Сторінок
+        one: Сторінка
+        other: Сторінки
+  spree:
+    static_content:
+      link: посилання
+      new_page: "Нова сторінка"

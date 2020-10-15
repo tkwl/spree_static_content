@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for :page_actions do %>
+<<<<<<< HEAD
   <li>
     <%= button_link_to Spree.t(:back_to_page_list), spree.admin_pages_path, :icon => 'icon-arrow-left' %>
   </li>
@@ -19,6 +20,31 @@
         <span class="or"><%= Spree.t(:or) %></span>
         <%= button_link_to Spree.t('actions.cancel'), spree.edit_admin_page_path(@page), :icon => 'icon-remove' %>
       </div>
+=======
+  <%= button_link_to Spree.t(:back_to_page_list), spree.admin_pages_path, :icon => 'arrow-left' %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @page } %>
+
+<div class="row">
+  <fieldset class="w-100 no-border-top translations">
+
+    <%= render 'settings' %>
+    <%= form_for [:admin, @resource] do |f| %>
+
+      <div class="row translations">
+        <div class="col-lg-8">
+          <%= form_for [:admin, @resource] do |f| %>
+            <%= render 'form_fields', f: f %>
+            <%= render 'spree/admin/shared/edit_resource_links' %>
+          <% end %>
+        </div>
+        <div class="col-lg-4">
+          <%= render 'fields' %>
+        </div>
+      </div>
+
+>>>>>>> 4956557039a208f8b1e3632ddf3fd03fa0225a3b
     <% end %>
   </fieldset>
 </div>

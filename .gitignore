@@ -1,10 +1,29 @@
+\#*
+*~
+.#*
 .DS_Store
-nbproject
-**.gem
+.idea
+.localeapp/locales
+.project
+coverage
+default
 Gemfile.lock
-spec/dummy/
-.rvmrc
 tmp
+<<<<<<< HEAD
 coverage
 .ruby-version
 .ruby-gemset
+=======
+nbproject
+pkg
+*.sw?
+spec/dummy
+.rvmrc
+.sass-cache
+public/spree
+.ruby-version
+.ruby-gemset
+gemfiles/*.gemfile.lock
+*.gem
+.bundle
+>>>>>>> 4956557039a208f8b1e3632ddf3fd03fa0225a3b

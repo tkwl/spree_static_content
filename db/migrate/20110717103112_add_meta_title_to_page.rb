@@ -1,4 +1,4 @@
-class AddMetaTitleToPage < ActiveRecord::Migration
+class AddMetaTitleToPage < SpreeExtension::Migration[4.2]
   def self.up
     add_column :spree_pages, :meta_title, :string
   end

@@ -1,20 +1,17 @@
-require 'spec_helper'
-
-feature 'Admin Static Content', js: true do
+RSpec.feature 'Admin Static Content', :js do
   stub_authorization!
+  let!(:store) { create(:store, default: true) }
 
   context 'when no page exists' do
     background do
-      visit spree.admin_path
-      click_link 'Configuration'
-      click_link 'Pages'
+      visit spree.admin_pages_path
     end
 
     scenario 'can create new page' do
-      expect(page).to have_text 'NO PAGES FOUND, ADD ONE!'
+      expect(page).to have_text 'No Page found, Add One!'
 
       click_link 'New page'
-      expect(page).to have_text 'Static pages'
+      expect(page).to have_text 'Pages'
 
       fill_in 'page_title', with: 'Contact us'
       fill_in 'page_slug', with: 'contact-us'
@@ -39,15 +36,11 @@ feature 'Admin Static Content', js: true do
     given!(:static_page) { create(:page) }
 
     background do
-      visit spree.admin_path
-      click_link 'Configuration'
-      click_link 'Pages'
+      visit spree.admin_pages_path
     end
 
     scenario 'can be updated' do
-      within_row(1) do
-        click_icon :edit
-      end
+      within_row(1) { click_icon :edit }
 
       fill_in 'page_title', with: 'Contact'
       fill_in 'page_slug', with: 'contact'
@@ -57,12 +50,9 @@ feature 'Admin Static Content', js: true do
     end
 
     scenario 'can be deleted' do
-      within_row(1) do
-        click_icon :trash
-      end
-
+      within_row(1) { click_icon :delete }
       page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist
-
+      expect(page).to have_text 'successfully removed!'
       expect(page).not_to have_text static_page.title
     end
   end
